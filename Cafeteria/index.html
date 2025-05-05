@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<h<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blanco Café | Minimalismo y Aroma</title>
+        <style>
+            /* Estilos minimalistas */
+            :root {
+                --primary: #1a1a1a;
+                --secondary: #f5f5f5;
+                --accent: #8B6B4A;
+                --text: #333;
+                --light-text: #777;
+            }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Helvetica Neue', Arial, sans-serif;
+                color: var(--text);
+                line-height: 1.6;
+                background-color: var(--secondary);
+                overflow-x: hidden;
+            }
+            
+            /* Animaciones sutiles */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+                100% { transform: translateY(0px); }
+            }
+            
+            /* Header */
+            header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                padding: 1.5rem 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.95);
+                z-index: 1000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                animation: fadeIn 1s ease-out;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+                font-weight: 300;
+                letter-spacing: 2px;
+                color: var(--primary);
+                text-decoration: none;
+            }
+            
+            .logo span {
+                color: var(--accent);
+            }
+            
+            nav ul {
+                display: flex;
+                list-style: none;
+            }
+            
+            nav ul li {
+                margin-left: 2rem;
+            }
+            
+            nav ul li a {
+                text-decoration: none;
+                color: var(--text);
+                font-weight: 300;
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+                transition: color 0.3s;
+                position: relative;
+            }
+            
+            nav ul li a:hover {
+                color: var(--accent);
+            }
+            
+            nav ul li a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 1px;
+                bottom: -5px;
+                left: 0;
+                background-color: var(--accent);
+                transition: width 0.3s;
+            }
+            
+            nav ul li a:hover::after {
+                width: 100%;
+            }
+            
+            /* Hero Section */
+            .hero {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                padding: 0 10%;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('https://png.pngtree.com/thumb_back/fw800/background/20230412/pngtree-food-gourmet-light-background-border-image_2213112.jpg') no-repeat center center/cover;
+                opacity: 0.7;
+                z-index: -1;
+            }
+            
+            .hero-content {
+                max-width: 600px;
+                animation: fadeIn 1.5s ease-out;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+                font-weight: 300;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                color: var(--text);
+                font-weight: 300;
+            }
+            
+            .btn {
+                display: inline-block;
+                padding: 0.8rem 2rem;
+                background-color: var(--accent);
+                color: white;
+                text-decoration: none;
+                border-radius: 2px;
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+                transition: all 0.3s;
+                border: 1px solid var(--accent);
+            }
+            
+            .btn:hover {
+                background-color: transparent;
+                color: var(--accent);
+            }
+            
+            /* About Section */
+            .about {
+                padding: 8rem 10%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: white;
+            }
+            
+            .about-img {
+                width: 45%;
+                animation: float 6s ease-in-out infinite;
+            }
+            
+            .about-img img {
+                width: 100%;
+                height: auto;
+                border-radius: 2px;
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .about-content {
+                width: 50%;
+                animation: fadeIn 1s ease-out;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                font-weight: 300;
+                margin-bottom: 2rem;
+                position: relative;
+                display: inline-block;
+            }
+            
+            .section-title::after {
+                content: '';
+                position: absolute;
+                width: 50%;
+                height: 1px;
+                bottom: -10px;
+                left: 0;
+                background-color: var(--accent);
+            }
+            
+            /* Menu Section */
+            .menu {
+                padding: 8rem 10%;
+                background-color: var(--secondary);
+            }
+            
+            .menu-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+            
+            .menu-item {
+                background-color: white;
+                padding: 2rem;
+                border-radius: 2px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            
+            .menu-item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .menu-item h3 {
+                font-size: 1.2rem;
+                font-weight: 400;
+                margin-bottom: 0.5rem;
+            }
+            
+            .menu-item p {
+                color: var(--light-text);
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            
+            .price {
+                font-size: 1.2rem;
+                color: var(--accent);
+                font-weight: 300;
+            }
+            
+            /* Gallery */
+            .gallery {
+                padding: 5rem 10%;
+                background-color: white;
+            }
+            
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+                margin-top: 3rem;
+            }
+            
+            .gallery-item {
+                height: 250px;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s;
+            }
+            
+            .gallery-item:hover img {
+                transform: scale(1.1);
+            }
+            
+            /* Contact */
+            .contact {
+                padding: 8rem 10%;
+                background-color: var(--secondary);
+            }
+            
+            .contact-container {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 3rem;
+            }
+            
+            .contact-info {
+                width: 40%;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.2rem;
+                font-weight: 400;
+                margin-bottom: 1.5rem;
+            }
+            
+            .contact-info p {
+                margin-bottom: 2rem;
+                color: var(--light-text);
+            }
+            
+            .contact-info div {
+                margin-bottom: 1.5rem;
+            }
+            
+            .contact-info i {
+                color: var(--accent);
+                margin-right: 10px;
+            }
+            
+            .contact-form {
+                width: 55%;
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                font-family: inherit;
+                font-size: 0.9rem;
+                transition: border 0.3s;
+            }
+            
+            .form-group input:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: var(--accent);
+            }
+            
+            .form-group textarea {
+                height: 150px;
+                resize: vertical;
+            }
+            
+            /* Footer */
+            footer {
+                background-color: var(--primary);
+                color: white;
+                padding: 3rem 10%;
+                text-align: center;
+            }
+            
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-links {
+                margin: 1.5rem 0;
+            }
+            
+            .social-links a {
+                color: white;
+                margin: 0 10px;
+                font-size: 1.2rem;
+                transition: color 0.3s;
+            }
+            
+            .social-links a:hover {
+                color: var(--accent);
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+                color: #aaa;
+                margin-top: 1rem;
+            }
+            
+            /* Responsive */
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+                
+                .about {
+                    flex-direction: column;
+                }
+                
+                .about-img, .about-content {
+                    width: 100%;
+                }
+                
+                .about-img {
+                    margin-bottom: 2rem;
+                }
+                
+                .contact-container {
+                    flex-direction: column;
+                }
+                
+                .contact-info, .contact-form {
+                    width: 100%;
+                }
+                
+                .contact-info {
+                    margin-bottom: 2rem;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <a href="#" class="logo">Cafeteria<span>Amanecer</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#menu">Menú</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1>El arte del café en su forma más pura</h1>
+                <p>Descubre la esencia del café de especialidad en un espacio diseñado para la tranquilidad y el disfrute sensorial.</p>
+                <a href="#menu" class="btn">Ver menú</a>
+            </div>
+        </section>
+    
+        <!-- About Section -->
+        <section class="about" id="nosotros">
+            <div class="about-img">
+                <img src="https://template.canva.com/EAGW82Zl5Mo/1/0/900w-LMTRweBCyTA.jpg">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Nuestra filosofía</h2>
+                <p>En pupuseria bendicion de Dios, te atenderemos con amabilidad y respeto, teniendo en cuenta la simplicidad y la calidad.
+                    Llevamos mas de 15 años brindando buen excelente servicio a nuestros clientes, y nos sentimos orgullosos de ello.</p>
+                </p>
+                <p>Nuestro espacio acojedor esta diseñodo para que vivas un buen momento, acompañados de unas ricas pupusas y buen cafe.</p>
+                <a href="#contacto" class="btn">Visítanos</a>
+            </div>
+        </section>
+    
+        <!-- Menu Section -->
+        <section class="menu" id="menu">
+            <h2 class="section-title">Nuestro menú</h2>
+            <p>Selección cuidadosa de bebidas y pupusas</p>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Frijol con Queso</h3>
+                    <p>Nuestra pupusas de Maiz y Arroz.</p>
+                    <span class="price">$0.40</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Queso</h3>
+                    <p>Tambien dispobline de maiz y de arroz.</p>
+                    <span class="price">$0.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Queso con mora</h3>
+                    <p>Una mezcla de queso con mora, una de nuestras especialidades.</p>
+                    <span class="price">$0.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Queso y Ayote</h3>
+                    <p>Una rica mezcla de queso y ayote, una de nuestras especialidades.</p>
+                    <span class="price">$0.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Café Negro</h3>
+                    <p>Traido de las tierras de suchitoto, uno de los mejores cafes de la región.</p>
+                    <span class="price">$0.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Variedad de refrescos</h3>
+                    <p>Gaseosas, frescos naturales, cafes, chocolates,bedidas de sabor y mucho más.</p>
+                    <span class="price">Precio varia segun el producto</span>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Gallery -->
+        <section class="gallery" id="galeria">
+            <h2 class="section-title">Nuestro espacio</h2>
+            <p>Un ambiente diseñado para la calma y la contemplación</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://myareanetwork-photos.s3.amazonaws.com/bizlist_photos/f/243454_1513304506.jpg?0" alt="Nuestras pupusas">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ytimg.com/vi/MkWf_maAX5E/maxresdefault.jpg">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://diarioelsalvador.com/wp-content/uploads/2021/09/Bicentenario-00001-683x1024.jpg" alt="Café en la mesa">
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/webp;base64,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" alt="Granos de café">
+                </div>
+            </div>
+        </section>
+    
+        <!-- Contact -->
+        <section class="contact" id="contacto">
+            <h2 class="section-title">Visítanos</h2>
+            <p> Estamos abierto los fines de semana con una buena pupuseria y un buen café</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de contacto</h3>
+                    <p>Pupuseria Bendición de Dios, es un oasis en medio de la ciudad, diseñado para aquellos que buscan un momento de tranquilidad acompañados de ricas pupusas, buen café y un buen clima.</p>
+                    
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Calle final Jardines de la Cima, lote 9, Casa #3, San Salvador, El Salvador</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>*503 7047-2952</span>
+                    </div>
+                    <div><i class="fas fa-phone"></i>
+                        <span>*503 7248-6925</span></div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>andersonmedinaz8y6@gmail.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <span>Viernes: 5pm - 8pm <br>Sábado y Domingo: 5pm - 8pm</span>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envíanos un mensaje</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <a href="#" class="logo">Cafeteria<span>Amanecer</span></a>
+                <p>Minimalismo, calidad y pasión por el café</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"> <link rel="stylesheet" href=""></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                
+                <p class="copyright">© 2025 Cafeteria Amanecer. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    
+        <script>
+            // Animaciones al hacer scroll
+            document.addEventListener('DOMContentLoaded', function() {
+                const observerOptions = {
+                    threshold: 0.1
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, observerOptions);
+                
+                // Elementos a observar
+                const sections = document.querySelectorAll('section');
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+                
+                // Smooth scrolling para los enlaces del menú
+                document.querySelectorAll('nav a').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            });
+        </script>
+    </body>
+    </html>
